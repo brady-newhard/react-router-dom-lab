@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './MailboxList.css';
 
-function MailboxList() {
-  return (
-    <h1>Mailbox List</h1>
-  )
+function MailboxList({ mailboxes }) {
+    return (
+        <>
+            <h1>Mailboxes</h1>
+            <div className="mailbox-container">
+                {mailboxes.map((mailbox) => (
+                    <Link to={`/mailboxes/${mailbox._id}`} key={mailbox._id} className="mail-box">
+                        <p>Owner: {mailbox.boxOwner}</p>
+                    </Link>
+                ))}
+            </div>
+        </>
+    );
 }
 
-export default MailboxList
+export default MailboxList;
